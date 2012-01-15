@@ -1,0 +1,7 @@
+.DS_Store
+Desktop.ini
+*~
+*.swp
+*.bak
+.[Tt]rash
+.netrwhist
