@@ -1,15 +1,15 @@
 # --- Functions --- #
 # Notice title
-function notice { echo  "\033[1;32m=> $1\033[0m"; }
+function notice { echo -e "\033[1;32m=> $1\033[0m"; }
 
 # Error title
-function error { echo "\033[1;31m=> Error: $1\033[0m"; }
+function error { echo -e "\033[1;31m=> Error: $1\033[0m"; }
 
 # List item
-function c_list { echo  "  \033[1;32m✔\033[0m $1"; }
+function c_list { echo -e "  \033[1;32m✔\033[0m $1"; }
 
 # Error list item
-function e_list { echo  "  \033[1;31m✖\033[0m $1"; }
+function e_list { echo -e "  \033[1;31m✖\033[0m $1"; }
 
 # Check for dependency
 function dep {
@@ -42,6 +42,9 @@ dep "hg"   "1.6"
 dep "ruby" "1.8"
 dep "vim" "7.3"
 dep "tree" "1.5"
+dep "rake" "0.8.7"
+dep "gem" "1.7.2"
+dep "bundle" "1.0.15"
 
 if [ "${#missing[@]}" -gt "0" ]; then
   error "Missing dependencies"
@@ -67,11 +70,12 @@ if [ -d ~/.dotfiles ]; then
 
   # --- Install --- #
   notice "Installing"
+  rake backup
   rake install
 else
   # --- Clone Repo --- #
   notice "Downloading"
-  git clone --recursive git://github.com/jimschubert/dotfiles.git ~/.dotfiles
+  git clone --recursive git@github.com:jimschubert/dotfiles.git ~/.dotfiles
 
   # --- Install --- #
   notice "Installing"
@@ -84,3 +88,6 @@ fi
 cd $current_pwd
 notice "Done"
 
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
