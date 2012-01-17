@@ -45,6 +45,7 @@ dep "tree" "1.5"
 dep "rake" "0.8.7"
 dep "gem" "1.7.2"
 dep "bundle" "1.0.15"
+dep "trash" "0.1.10"
 
 if [ "${#missing[@]}" -gt "0" ]; then
   error "Missing dependencies"
