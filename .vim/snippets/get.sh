@@ -4,5 +4,5 @@ snippets=( _ autoit c cpp html java javascript mako objc perl php python ruby sh
 
 for val in "${snippets[@]}"
 do
-  wget https://github.com/ryanb/dotfiles/blob/master/vim/snippets/$val.snippets
+  wget https://raw.github.com/ryanb/dotfiles/master/vim/snippets/$val.snippets
 done
