@@ -16,6 +16,16 @@ I think I've got a pretty good setup.  Be sure to check out the three above.
 
 # Installation
 
+Caveat: if you're installing this to a non-new environment, be sure to run a backup and make sure it works.
+
+    git clone git@github.com:jimschubert/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles
+    rake backup
+    cd ~/.dotfiles-backup/[TAB TAB]
+
+If your files are not backed up, please either manually backup or edit the script. This script is _*destructive*_.
+
+
 Run `bootstrapper.sh` and it will complain about missing dependencies or favorite programs.
 
 The quick `apt-get`:
