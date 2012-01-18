@@ -23,7 +23,7 @@ task :backup do
   dir = FileUtils.mkdir_p( File.expand_path( File.join( '~' , '.dotfiles-backup', Time.now.to_s ) ) )
   entries.each do | file |
     orig = File.expand_path( "~/#{file}" )
-    FileUtils.cp_r orig, "#{dir}/#{file}", :verbose => true if File.exists? orig
+    FileUtils.cp_r orig, File.join("#{dir.first}", "#{file}"), :verbose => true if File.exists? orig
   end
 end
 
