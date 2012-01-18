@@ -53,7 +53,7 @@ namespace :install do
   desc 'Run post-install tasks.'
   task :post do
     puts "\n\n\n##################################################"
-    puts "Don't forget to edit your git config: ~/.gitconfig"
+    puts "Don't forget to edit your config files: ~/.gitconfig and ~/.hgrc"
   end
 
 end

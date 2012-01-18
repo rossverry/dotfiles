@@ -19,15 +19,12 @@ function dep {
 
   # Check version
   if $i ; then
-    local version=$($1 --version | grep -oE -m 1 "[[:digit:]]+\.[[:digit:]]+\.?[[:digit:]]?")
-    [[ $version < $2 ]] && local msg="$1 version installed: $version, version needed: $2"
+    local version=$($1 --version | grep -oE -m 1 "[[:digit:]]+\.[[:digit:]]+\.?[[:digit:]]*")
+    [[ $version < $2 ]] && local msg="Version $1 ($version) needed: $2" 
+    [ -n "$msg" ] && missing+=("$msg")
   else
     local msg="Missing $1"
-  fi
-  
-  # Save if dep not met
-  if ! $i || [ -n "$msg" ] ; then
-    missing+=($msg)
+    missing+=("$msg")
   fi
 }
 
@@ -42,7 +39,7 @@ dep "ruby" "1.8"
 dep "vim" "7.3"
 dep "tree" "1.5"
 dep "rake" "0.8.7"
-dep "trash" "0.1.10"
+dep "trash" "0.1.1"
 
 if [ "${#missing[@]}" -gt "0" ]; then
   error "Missing dependencies"
@@ -86,6 +83,6 @@ fi
 cd $current_pwd
 notice "Done"
 
-if [ -f ~/.bashrc ]; then
+if [ -f ~/.bashrc ] ; then
     source ~/.bashrc
 fi
