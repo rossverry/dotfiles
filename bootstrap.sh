@@ -72,7 +72,7 @@ if [ -d ~/.dotfiles ]; then
 else
   # --- Clone Repo --- #
   notice "Downloading"
-  git clone --recursive git@github.com:jimschubert/dotfiles.git ~/.dotfiles
+  git clone --recursive git@github.com:rossverry/dotfiles.git ~/.dotfiles
 
   # --- Install --- #
   notice "Installing"
